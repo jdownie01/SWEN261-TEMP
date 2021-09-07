@@ -1,12 +1,11 @@
 package com.example.ui;
 
-import java.util.Objects;
-import java.util.logging.Logger;
+import com.example.appl.PlayerServices;
 
 import javax.servlet.http.HttpSessionBindingEvent;
 import javax.servlet.http.HttpSessionBindingListener;
-
-import com.example.appl.PlayerServices;
+import java.util.Objects;
+import java.util.logging.Logger;
 
 /**
  * Whenever an instance of a class that implements {@linkplain HttpSessionBindingListener}
@@ -17,26 +16,26 @@ import com.example.appl.PlayerServices;
  * @author <a href='mailto:bdbvse@rit.edu'>Bryan Basham</a>
  */
 public class SessionTimeoutWatchdog implements HttpSessionBindingListener {
-  private static final Logger LOG = Logger.getLogger(SessionTimeoutWatchdog.class.getName());
+    private static final Logger LOG = Logger.getLogger(SessionTimeoutWatchdog.class.getName());
 
-  private final PlayerServices playerServices;
+    private final PlayerServices playerServices;
 
-  public SessionTimeoutWatchdog(final PlayerServices playerServices) {
-    LOG.fine("Watch dog created.");
-    this.playerServices = Objects.requireNonNull(playerServices);
-  }
+    public SessionTimeoutWatchdog(final PlayerServices playerServices) {
+        LOG.fine("Watch dog created.");
+        this.playerServices = Objects.requireNonNull(playerServices);
+    }
 
-  @Override
-  public void valueBound(HttpSessionBindingEvent event) {
-    // ignore this event
-    LOG.fine("Player session started.");
-  }
+    @Override
+    public void valueBound(HttpSessionBindingEvent event) {
+        // ignore this event
+        LOG.fine("Player session started.");
+    }
 
-  @Override
-  public void valueUnbound(HttpSessionBindingEvent event) {
-    // the session is being terminated do some cleanup
-    playerServices.endSession();
-    //
-    LOG.fine("Player session ended.");
-  }
+    @Override
+    public void valueUnbound(HttpSessionBindingEvent event) {
+        // the session is being terminated do some cleanup
+        playerServices.endSession();
+        //
+        LOG.fine("Player session ended.");
+    }
 }
