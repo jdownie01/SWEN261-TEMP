@@ -1,7 +1,7 @@
 package com.example.ui;
 
 import com.example.appl.PlayerServices;
-import com.example.model.GuessGame;
+import com.example.model.CheckersGame;
 import spark.*;
 
 import java.util.HashMap;
@@ -52,13 +52,13 @@ public class GetGameRoute implements Route {
          * In either case, we will redirect back to home.
          */
         if (playerServices != null) {
-            GuessGame game = playerServices.currentGame();
+            CheckersGame game = playerServices.currentGame();
 
             // build the View-Model
             final Map<String, Object> vm = new HashMap<>();
             vm.put(GetHomeRoute.TITLE_ATTR, TITLE);
             vm.put(GAME_BEGINS_ATTR, game.isGameBeginning());
-            vm.put(GUESSES_LEFT_ATTR, game.guessesLeft());
+            //vm.put(GUESSES_LEFT_ATTR, game.guessesLeft());
             // render the Game Form view
             return templateEngine.render(new ModelAndView(vm, VIEW_NAME));
         } else {

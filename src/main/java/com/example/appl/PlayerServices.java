@@ -1,8 +1,7 @@
 package com.example.appl;
 
 
-import com.example.model.GuessGame;
-import com.example.model.GuessGame.GuessResult;
+import com.example.model.CheckersGame;
 
 /**
  * The object to coordinate the state of the Web Application.
@@ -27,7 +26,7 @@ public class PlayerServices {
     // The gameCenter provides sitewide features for all the games and players.
     private final GameCenter gameCenter;
     // This player's game. There is only one game at a time allowed.
-    private GuessGame game;
+    private CheckersGame game;
 
     /**
      * Construct a new {@Linkplain PlayerServices} but wait for the player to want to start a game.
@@ -45,7 +44,7 @@ public class PlayerServices {
      * @return GuessGame
      * the current game being played
      */
-    public synchronized GuessGame currentGame() {
+    public synchronized CheckersGame currentGame() {
         if (game == null) {
             game = gameCenter.getGame();
         }
@@ -61,11 +60,9 @@ public class PlayerServices {
 
     /**
      * The player makes a guess of the secret number.
-     *
-     * @param guess The number guessed
-     */
-    public synchronized GuessResult makeGuess(int guess) {
-        GuessResult result = game.makeGuess(guess);
+     **/
+    public synchronized boolean makeMove(String move) {
+        boolean result = game.makeMove(move);
         if (game.isFinished()) {
             gameCenter.gameFinished();
         }
@@ -87,24 +84,6 @@ public class PlayerServices {
      */
     public boolean isStartingGame() {
         return game.isGameBeginning();
-    }
-
-    /**
-     * Does the player still have more guesses in the current game?
-     *
-     * @return true if the player still has guesses left in this game
-     */
-    public boolean hasMoreGuesses() {
-        return game.hasMoreGuesses();
-    }
-
-    /**
-     * How many guesses does the player have left in this game?
-     *
-     * @return the number of guesses the player has left in the current game
-     */
-    public int guessesLeft() {
-        return game.guessesLeft();
     }
 
 }

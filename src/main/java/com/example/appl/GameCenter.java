@@ -1,6 +1,6 @@
 package com.example.appl;
 
-import com.example.model.GuessGame;
+import com.example.model.CheckersGame;
 
 import java.util.logging.Logger;
 
@@ -50,10 +50,10 @@ public class GameCenter {
     /**
      * Create a new {@Linkplain GuessGame} game.
      *
-     * @return A new {@link GuessGame}
+     * @return A new {@link CheckersGame}
      */
-    public GuessGame getGame() {
-        return new GuessGame();
+    public CheckersGame getGame() {
+        return new CheckersGame();
     }
 
     /**

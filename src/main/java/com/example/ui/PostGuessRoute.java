@@ -102,43 +102,19 @@ public class PostGuessRoute implements Route {
          */
         if (playerServices != null) {
             vm.put(GetGameRoute.GAME_BEGINS_ATTR, playerServices.isStartingGame());
-            vm.put(GetGameRoute.GUESSES_LEFT_ATTR, playerServices.guessesLeft());
+            //vm.put(GetGameRoute.GUESSES_LEFT_ATTR, playerServices.guessesLeft());
 
             // retrieve request parameter
             final String guessStr = request.queryParams(GUESS_PARAM);
 
-            // convert the input
-            int guess = -1;
-            try {
-                guess = Integer.parseInt(guessStr);
-            } catch (NumberFormatException e) {
-                // re-display the guess form with an error message
-                return templateEngine.render(error(vm, makeBadArgMessage(guessStr)));
-            }
 
             // make the guess and create the appropriate ModelAndView for rendering
             ModelAndView mv;
-            switch (playerServices.makeGuess(guess)) {
-                case INVALID:
-                    mv = error(vm, makeInvalidArgMessage(guessStr));
-                    break;
-
-                case WRONG:
-                    vm.put(GetGameRoute.GUESSES_LEFT_ATTR, playerServices.guessesLeft());
-                    mv = error(vm, BAD_GUESS);
-                    break;
-
-                case WON:
-                    mv = youWon(vm, playerServices);
-                    break;
-
-                case LOST:
-                    mv = youLost(vm, playerServices);
-                    break;
-
-                default:
-                    // All the GuessResult values are in case statements so we should never get here.
-                    throw new NoSuchElementException("Invalid result of guess received.");
+            boolean b = playerServices.makeMove(guessStr);
+            if (b) {
+                mv = error(vm, makeInvalidArgMessage(guessStr));
+            } else {
+                mv = youWon(vm, playerServices);
             }
 
             return templateEngine.render(mv);
