@@ -19,6 +19,8 @@ public class CheckersGame {
     private Board currentBoard;
     private Player winner;
 
+    private String name;
+
 
     // Constants
     private static final Logger LOG = Logger.getLogger(CheckersGame.class.getName());
@@ -40,6 +42,11 @@ public class CheckersGame {
         LOG.fine("Game created ");
     }
 
+    public CheckersGame(String name) {
+        this.name = name;
+        LOG.fine("Game created ");
+    }
+
     //
     // Constructors
     //
@@ -52,6 +59,10 @@ public class CheckersGame {
      */
     public synchronized boolean isGameBeginning() {
         return true;
+    }
+
+    public synchronized String getName() {
+        return name;
     }
 
     //

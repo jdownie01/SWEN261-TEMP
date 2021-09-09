@@ -5,24 +5,146 @@
     <link rel="stylesheet" type="text/css" href="/styles/main.css">
 </head>
 <body>
-    <h1>${title}</h1>
+<div class="content">
+    <div class="paralax">
+        <div class="layer rocks2"></div>
+        <div class="layer rocks1"></div>
+        <div class="layer hills"></div>
+        <div class="layer foreground"></div>
+    </div>
+</div>
+<div id="link">
+    <!-- astea 2 sunt puse ca indexarea claselor sa inceapa de la 1 -->
+    <div class="checker white_checker" style="display:none"> </div>
+    <div class="checker black_checker" style="display:none"> </div>
 
-    <div class="body">
-      <h4>Make <#if isFirstGuess>a<#else>Another</#if> Guess</h4>
-      
-      <#if message??>
-      <div class="message ${messageType}">${message}</div>
-      </#if>
-      
-      <form action="./guess" method="POST">
-        Guess a number between 0 and 9. You have ${guessesLeft} guess<#if
-guessesLeft gt 1>es</#if> left.
-        <br/>
-        <input name="myGuess" />
-        <br/><br/>
-        <button type="submit">Ok</button>
-      </form>
+
+    <div class="square" style="display: none" id ="ht"> </div>
+    <div class="black_background" id="black_background"> </div>
+
+    <div class="score" id="score">
+        <br>
+    </div>
+    <div class="table" id="table">
+        <!--TODO: Parse Board class into HTML-->
+        <!--
+
+        <div class="checker white_checker"> </div>
+        <div class="checker white_checker"> </div>
+        <div class="checker white_checker"> </div>
+        <div class="checker white_checker"> </div>
+        <div class="checker white_checker"> </div>
+        <div class="checker white_checker"> </div>
+        <div class="checker white_checker"> </div>
+        <div class="checker white_checker"> </div>
+        <div class="checker white_checker"> </div>
+        <div class="checker white_checker"> </div>
+        <div class="checker white_checker"> </div>
+        <div class="checker white_checker"> </div>
+
+        <div class="checker black_checker"> </div>
+        <div class="checker black_checker"> </div>
+        <div class="checker black_checker"> </div>
+        <div class="checker black_checker"> </div>
+        <div class="checker black_checker"> </div>
+        <div class="checker black_checker"> </div>
+        <div class="checker black_checker"> </div>
+        <div class="checker black_checker"> </div>
+        <div class="checker black_checker"> </div>
+        <div class="checker black_checker"> </div>
+        <div class="checker black_checker"> </div>
+        <div class="checker black_checker"> </div>
+-->
+
+        <div class="square black_square"> </div>
+        <div class="square white_square"> </div>
+        <div class="square black_square"> </div>
+        <div class="square white_square"> </div>
+        <div class="square black_square"> </div>
+        <div class="square white_square"> </div>
+        <div class="square black_square"> </div>
+        <div class="square white_square"> </div>
+        <div class="clear_float"> </div>
+
+        <div class="square white_square"> </div>
+        <div class="square black_square"> </div>
+        <div class="square white_square"> </div>
+        <div class="square black_square"> </div>
+        <div class="square white_square"> </div>
+        <div class="square black_square"> </div>
+        <div class="square white_square"> </div>
+        <div class="square black_square"> </div>
+        <div class="clear_float"> </div>
+
+        <div class="square black_square"> </div>
+        <div class="square white_square"> </div>
+        <div class="square black_square"> </div>
+        <div class="square white_square"> </div>
+        <div class="square black_square"> </div>
+        <div class="square white_square"> </div>
+        <div class="square black_square"> </div>
+        <div class="square white_square"> </div>
+        <div class="clear_float"> </div>
+
+        <div class="square white_square"> </div>
+        <div class="square black_square"> </div>
+        <div class="square white_square"> </div>
+        <div class="square black_square"> </div>
+        <div class="square white_square"> </div>
+        <div class="square black_square"> </div>
+        <div class="square white_square"> </div>
+        <div class="square black_square"> </div>
+        <div class="clear_float"> </div>
+
+        <div class="square black_square"> </div>
+        <div class="square white_square"> </div>
+        <div class="square black_square"> </div>
+        <div class="square white_square"> </div>
+        <div class="square black_square"> </div>
+        <div class="square white_square"> </div>
+        <div class="square black_square"> </div>
+        <div class="square white_square"> </div>
+        <div class="clear_float"> </div>
+
+        <div class="square white_square"> </div>
+        <div class="square black_square"> </div>
+        <div class="square white_square"> </div>
+        <div class="square black_square"> </div>
+        <div class="square white_square"> </div>
+        <div class="square black_square"> </div>
+        <div class="square white_square"> </div>
+        <div class="square black_square"> </div>
+        <div class="clear_float"> </div>
+
+        <div class="square black_square"> </div>
+        <div class="square white_square"> </div>
+        <div class="square black_square"> </div>
+        <div class="square white_square"> </div>
+        <div class="square black_square"> </div>
+        <div class="square white_square"> </div>
+        <div class="square black_square"> </div>
+        <div class="square white_square"> </div>
+        <div class="clear_float"> </div>
+
+        <div class="square white_square"> </div>
+        <div class="square black_square"> </div>
+        <div class="square white_square"> </div>
+        <div class="square black_square"> </div>
+        <div class="square white_square"> </div>
+        <div class="square black_square"> </div>
+        <div class="square white_square"> </div>
+        <div class="square black_square"> </div>
+        <div class="clear_float"> </div>
+
     </div>
 
+    <audio id="moveSound">
+        <source src = "sounds/move.mp3">
+    </audio>
+    <audio id="winSound">
+        <<source src="sounds/win.mp3">
+    </audio>
+</div>
+</div>
 </body>
 </html>

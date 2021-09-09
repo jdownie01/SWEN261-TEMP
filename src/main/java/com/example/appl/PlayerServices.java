@@ -25,6 +25,7 @@ public class PlayerServices {
     //
     // The gameCenter provides sitewide features for all the games and players.
     private final GameCenter gameCenter;
+    public boolean started;
     // This player's game. There is only one game at a time allowed.
     private CheckersGame game;
 
@@ -36,6 +37,7 @@ public class PlayerServices {
     PlayerServices(GameCenter gameCenter) {
         game = null;
         this.gameCenter = gameCenter;
+        this.started = false;
     }
 
     /**

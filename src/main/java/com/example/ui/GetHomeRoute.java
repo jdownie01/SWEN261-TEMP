@@ -24,7 +24,8 @@ public class GetHomeRoute implements Route {
     static final String TITLE_ATTR = "title";
     static final String GAME_STATS_MSG_ATTR = "gameStatsMessage";
     static final String NEW_PLAYER_ATTR = "newPlayer";
-    static final String TITLE = "Welcome to the Guessing Game";
+    static final String TITLE = "Welcome to Checkers.io";
+
     static final String VIEW_NAME = "home.ftl";
 
     // Key in the session attribute map for the player who started the session
@@ -78,6 +79,7 @@ public class GetHomeRoute implements Route {
 
         // if this is a brand new browser session or a session that timed out
         if (httpSession.attribute(PLAYERSERVICES_KEY) == null) {
+            /**
             // get the object that will provide client-specific services for this player
             final PlayerServices playerService = gameCenter.newPlayerServices();
             httpSession.attribute(PLAYERSERVICES_KEY, playerService);
@@ -89,7 +91,10 @@ public class GetHomeRoute implements Route {
             httpSession.maxInactiveInterval(SESSION_TIMEOUT_PERIOD);
 
             // render the Game Form view
-            vm.put(NEW_PLAYER_ATTR, true);
+            //vm.put(NEW_PLAYER_ATTR, true);
+
+
+             **/
             return templateEngine.render(new ModelAndView(vm, VIEW_NAME));
         } else {
             // there is a game already being played so redirect the user to the Game view

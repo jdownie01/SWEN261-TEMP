@@ -92,7 +92,6 @@ public final class Application {
         webServer.initialize();
 
         // other applications might have additional services to configure
-
         LOG.config("Application initialization complete.");
     }
 

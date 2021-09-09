@@ -1,82 +1,250 @@
-body {
-    background: #CAECFF;
-    font-family: 'Trebuchet MS', sans-serif;
-    font-size: 14px;
-}
-
-a {
-    color: #2677FF;
-}
-
-a:hover {
-    color: #333;
-}
-
-input[type="text"] {
-    background: white;
-    border: 1px solid #BFE6FF;
-    padding: 2px;
-    font-family: 'Trebuchet MS', sans-serif;
-    font-size: 14px;
-    -moz-border-radius: 2px;
-    -webkit-border-radius: 2px;
-    color: #1057FF;
-}
-
-input[type="submit"] {
-    background: #1057FF;
-    border: 1px solid #073BFF;
-    padding: 1px 3px;
-    font-family: 'Trebuchet MS', sans-serif;
-    font-size: 14px;
-    font-weight: bold;
-    -moz-border-radius: 2px;
-    -webkit-border-radius: 2px;
-    color: white;
-}
-
-div.page {
-    background: white;
-    border: 1px solid #6ECCFF;
-    width: 710px;
-    margin: 30px auto;
-}
-
-div.page h1 {
-    background: #6ECCFF;
+html, body {
     margin: 0;
-    padding: 10px 14px;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    transition: 1s ease-in-out;
+
+}
+section {
+    margin: 0;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-color: #c0b3a0;
+}
+.content {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+.paralax {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: url("http://www.testomic.com/public/codepen-assets/img/paralax/background.jpg");
+    background-size: cover;
+    background-position: center;
+}
+.paralax .layer {
+    position: absolute;
+    width: 400%;
+}
+.paralax .foreground {
+    height: 50%;
+    bottom: 0;
+    background: url("http://www.testomic.com/public/codepen-assets/img/paralax/foreground.png") repeat-x;
+    background-size: 25% 100%;
+    animation: slideshow 30s linear infinite;
+}
+.paralax .hills {
+    height: 40%;
+    bottom: 15%;
+    background: url("http://www.testomic.com/public/codepen-assets/img/paralax/hills.png") repeat-x;
+    background-size: 25% 100%;
+    animation: slideshow 60s linear infinite;
+}
+.paralax .rocks1 {
+    height: 35%;
+    bottom: 25%;
+    background: url("http://www.testomic.com/public/codepen-assets/img/paralax/rocks1.png") repeat-x;
+    background-size: 25% 100%;
+    animation: slideshow 120s linear infinite;
+}
+.paralax .rocks2 {
+    height: 40%;
+    bottom: 15%;
+    background: url("http://www.testomic.com/public/codepen-assets/img/paralax/rocks2.png") repeat-x;
+    background-size: 25% 100%;
+    animation: slideshow 240s linear infinite;
+}
+@keyframes slideshow {
+    0% {
+        transform: translateX(0%);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+@keyframes dayToNight {
+    0% {
+        -webkit-filter: hue-rotate(0deg) brightness(1);
+        filter: hue-rotate(0deg) brightness(1);
+    }
+    50% {
+        -webkit-filter: hue-rotate(180deg) brightness(0.1);
+        filter: hue-rotate(180deg) brightness(0.1);
+    }
+    100% {
+        -webkit-filter: hue-rotate(0deg) brightness(1);
+        filter: hue-rotate(0deg) brightness(1);
+    }
+}
+/** * Nonatomic Branding */
+#link {
+    font-family: 'Roboto', sans-serif;
+    position: fixed;
+    bottom: 50%;
+    width: 100%;
+    text-align: center;
+}
+ul {
+    list-style-type: none;
+}
+.img-url {
+    text-decoration: none;
+}
+.fancy {
+    color: #DFF0D8;
+    font-family: 'Roboto', sans-serif;
+    font-size: 300%;
+}
+.url {
+    opacity: 0.5;
+    text-decoration: none;
+}
+a:link {
     color: white;
+}
+a:visited {
+    color: white;
+}
+a:hover {
+    color: purple;
+}
+a:active {
+    color: white;
+}
+#small-logo {
+    width: 30px;
+    transform: translate(-10px, 12px);
+    opacity: 1;
+}
+/** * Versions */
+#versions {
+    font-family: 'Roboto', sans-serif;
+    position: fixed;
+    top: 5%;
+    width: 100%;
+    text-align: center;
+}
+.url-highlighted {
+    opacity: 1;
+    text-decoration: none;
+}
+.url-normal {
+    opacity: 0.5;
+    text-decoration: none;
+}
+
+
+.square{
+    float: left;
+    width: 80px;
+    height: 80px;
+}
+
+.white_square{
+    background-color:#F0D2B4;
+}
+.black_square{
+    background-color :#BA7A3A;
+}
+.clear_float{
+    clear: both;
+}
+
+.table{
+    width: 640px;
+    height: 640px;
+    margin: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;}
+.score{
+    background-color: #1aaaad;
+    color: white;
+    display: none;
+    font-size: 45px;
+    font-weight: 900;
+    height:150px;
+    border-radius: 10%;
+    left: 0px;
     letter-spacing: 1px;
-    text-shadow: 0 0 3px #2477FF;
-    font-weight: normal;
+    margin : 0 auto;
+    padding-top: 30px;
+    overflow: hidden;
+    position: absolute;
+    right: 0px;
+    text-align: center;
+    top: 15%;
+    width: 200px;
+    z-index: 8;
+    font-family: Calibri, Candara, Segoe, 'Segoe UI', Optima, Arial, sans-serif;
+    -webkit-transition: 5s ease-in-out;
+    -moz-transition: 5s ease-in-out;
+    -o-transition: 5s ease-in-out;
+    transition: 5s ease-in-out;
 }
 
-div.page h2 {
-    margin: 0 0 15px 0;
-    color: #1057FF;
-    text-shadow: 0 1px 2px #ccc;
+.checker{
+    top:10px;
+    left:10px;
+    width: 54px;
+    height: 54px;
+    border-radius: 50%;
+    position: absolute;
+    border: 4px solid white;
+    cursor: pointer;
+
 }
 
-div.page div.body {
-    padding: 10px;
+.white_checker{
+    background: #CC0000;
+    -webkit-transition: 0.3s ease-in-out;
+    -moz-transition: 0.3s ease-in-out;
+    -o-transition: 0.3s ease-in-out;
+    transition: 0.3s ease-in-out;
 }
 
-div.message {
-    margin: 10px 0;
-    width: 33%;
-    border-radius: 2px;
-    -moz-border-radius: 2px;
-    -webkit-border-radius: 2px;
-    padding: 4px;
-    font-size: 13px;
-}
-div.message.error {
-    background: #FAE4E4;
-    border: 1px solid #DD6F6F;
+.black_checker{
+    background: #00001F;
+    -webkit-transition: 0.3s ease-in-out;
+    -moz-transition: 0.3s ease-in-out;
+    -o-transition: 0.3s ease-in-out;
+    transition: 0.3s ease-in-out;
 }
 
-div.message.success {
-    background: #FAFFE4;
-    border: 1px solid #DDFF6F;
+.black_background{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    opacity: 0.5;
+    z-index:  7;
+    display: none;
 }
+
+@media only screen and (max-width : 640px){
+    .table{
+        width: 400px;
+        height: 400px;
+    }
+
+    .square{
+        width: 50px;
+        height: 50px;
+    }
+
+    .checker{
+        width: 32px;
+        height: 32px;
+    }
+}
+
+
+ 

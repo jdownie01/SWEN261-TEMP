@@ -3,6 +3,7 @@ package com.example.ui;
 import com.example.appl.GameCenter;
 import spark.TemplateEngine;
 
+import java.util.ArrayList;
 import java.util.Objects;
 import java.util.logging.Logger;
 
@@ -146,8 +147,10 @@ public class WebServer {
 
         // Post a guess.
         post(GUESS_URL, new PostGuessRoute(gameCenter, templateEngine));
-
-        //
+        gameCenter.gamesArrayList = new ArrayList<>();
+        gameCenter.addGame("test1");
+        gameCenter.addGame("test2");
+        gameCenter.addGame("test3");
         LOG.config("WebServer is initialized.");
     }
 

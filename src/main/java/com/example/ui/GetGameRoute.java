@@ -2,6 +2,7 @@ package com.example.ui;
 
 import com.example.appl.PlayerServices;
 import com.example.model.CheckersGame;
+import jdk.jfr.internal.Logger;
 import spark.*;
 
 import java.util.HashMap;
@@ -21,9 +22,10 @@ public class GetGameRoute implements Route {
     // Values used in the view-model map for rendering the game view.
     static final String GAME_BEGINS_ATTR = "isFirstGuess";
     static final String GUESSES_LEFT_ATTR = "guessesLeft";
-    static final String TITLE = "Number Guess Game";
+    static final String TITLE = "Checkers TITLE";
+    static final String TITLE_ATTR = "title";
     static final String VIEW_NAME = "game_form.ftl";
-
+    private static final java.util.logging.Logger LOG = java.util.logging.Logger.getLogger(WebServer.class.getName());
     private final TemplateEngine templateEngine;
 
     /**
@@ -43,29 +45,9 @@ public class GetGameRoute implements Route {
      */
     @Override
     public String handle(Request request, Response response) {
-        // retrieve the game object and start one if no game is in progress
-        final Session httpSession = request.session();
-        final PlayerServices playerServices =
-                httpSession.attribute(GetHomeRoute.PLAYERSERVICES_KEY);
-
-        /* A null playerServices indicates a timed out session or an illegal request on this URL.
-         * In either case, we will redirect back to home.
-         */
-        if (playerServices != null) {
-            CheckersGame game = playerServices.currentGame();
-
-            // build the View-Model
-            final Map<String, Object> vm = new HashMap<>();
-            vm.put(GetHomeRoute.TITLE_ATTR, TITLE);
-            vm.put(GAME_BEGINS_ATTR, game.isGameBeginning());
-            //vm.put(GUESSES_LEFT_ATTR, game.guessesLeft());
-            // render the Game Form view
-            return templateEngine.render(new ModelAndView(vm, VIEW_NAME));
-        } else {
-            response.redirect(WebServer.HOME_URL);
-            halt();
-            return null;
-
-        }
+        final Map<String, Object> vm = new HashMap<>();
+        vm.put(TITLE_ATTR, TITLE);
+        LOG.config(request.queryParams("name"));
+        return templateEngine.render(new ModelAndView(vm, VIEW_NAME));
     }
 }
