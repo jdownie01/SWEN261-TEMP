@@ -1,6 +1,6 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>com.example</groupId>
@@ -20,23 +20,23 @@
     <maven.compiler.version>3.8.0</maven.compiler.version>
     <maven.assembly.version>3.1.0</maven.assembly.version>
     <maven.exec.version>1.6.0</maven.exec.version>
-    
+
     <!-- Application dependency versions -->
     <spark.version>2.7.2</spark.version>
     <spark.freemarker.version>2.7.1</spark.freemarker.version>
     <freemarker.version>2.3.28</freemarker.version>
     <slf4j.version>1.7.25</slf4j.version>
-    
+
     <!-- Test build dependency versions -->
     <maven.surefire.version>2.22.0</maven.surefire.version>
     <jacoco.version>0.8.2</jacoco.version>
-    
+
     <!-- Test dependency versions -->
     <junit.jupiter.version>5.3.0</junit.jupiter.version>
     <apiguardian.version>1.0.0</apiguardian.version>
     <junit.version>5.0</junit.version>
     <mockito.version>2.21.0</mockito.version>
-    
+
   </properties>
 
   <dependencies>
@@ -244,6 +244,8 @@
         <artifactId>jacoco-maven-plugin</artifactId>
         <version>${jacoco.version}</version>
         <configuration>
+          <!-- TODO: inspect IntelliJ error:
+                "Element destfile is not allowed here" -->
           <destfile>/target/coverage-reports/jacoco-unit.exec</destfile>
           <datafile>/target/coverage-reports/jacoco-unit.exec</datafile>
         </configuration>
@@ -294,7 +296,7 @@
         </executions>
       </plugin>
       <!-- END: Testing plugins -->
-      
+
     </plugins>
   </build>
 </project>
